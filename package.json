@@ -1,0 +1,28 @@
+{
+  "name": "Etude",
+  "version": "1.0.0",
+  "description": "Music Collaboration Web Application",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joannenbruno/Etude.git"
+  },
+  "author": "Jeremy Cantu && Joanne Bruno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joannenbruno/Etude/issues"
+  },
+  "homepage": "https://github.com/joannenbruno/Etude",
+  "dependencies": {
+    "express": "^4.8.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.7.1",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^0.15.0",
+    "gulp-nodemon": "^1.0.4"
+  }
+}
