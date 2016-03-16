@@ -31,10 +31,10 @@
 			outMarkerColor: '#a0a0a0',
 
 			// Colour for the zoomed in waveform
-			zoomWaveformColor: '#1DAD9B',
+			zoomWaveformColor: '#FF0000',
 
 			// Colour for the overview waveform
-			overviewWaveformColor: 'rgba(0,0,0,0.2)',
+			overviewWaveformColor: '#FF0000',
 
 			// Colour for the overview waveform rectangle that shows what the zoom view shows
 			overviewHighlightRectangleColor: '#9BF4D5',
