@@ -5,27 +5,12 @@
 		<link rel="stylesheet" href="styles/style.css"/>
 	</head>
 	<body>
-	<!-- waveform container -->
-	 <div id="first-waveform-visualiser-container"></div>
-
-	    <div id="demo-controls">
-	      <audio controls=controls>
-	        <source src="./test_data/sample.mp3" type="audio/mpeg">
-	        <source src="./test_data/sample.ogg" type="audio/ogg">
-	        Your browser does not support the audio element.
-	      </audio>
-
-	      <button data-action="zoom-in">zoom in</button>
-	      <button data-action="zoom-out">zoom out</button>
-	      <button data-action="add-segment">Add a Segment at current time</button>
-	      <button data-action="remove-segments">Remove all Segments</button>
-	      <button data-action="add-point">Add a Point at current time</button>
-	      <button data-action="log-data">Log segments/points</button>
-	      <button data-action="return-segments">Return segments</button>
-	    </div>
-
+	
+		<div id = "waveform-div"></div>
+		
 		<script src="scripts/lib/peaks.js"></script>
 		<script type="text/javascript" src = "scripts/main.js"></script>
 		<script type="text/javascript" src = "scripts/waveformApi.js"></script>
+
 	</body>
 </html>
