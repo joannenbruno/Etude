@@ -83,6 +83,16 @@
     peaksInstance.segments.add([segment]);
   });
 
+  // remove all segments by calling waveformApi
+  document.querySelector('button[data-action="remove-segments"]').addEventListener('click', function() {
+  	_removeAllTrackSegments(peaksInstance);
+  });
+
+  // remove all segments by calling waveformApi
+  document.querySelector('button[data-action="return-segments"]').addEventListener('click', function() {
+  	console.log(_getTrackSegments(peaksInstance));
+  });
+
   // add point at time selected button
   document.querySelector('button[data-action="add-point"]').addEventListener("click", function () {
     var point = {
