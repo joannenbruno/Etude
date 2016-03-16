@@ -1,11 +1,32 @@
 <html>
 	<head>
 		<title>Etude</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" href="styles/materialize/css/materialize.min.css">
 		<link rel="stylesheet" href="styles/style.css"/>
+
+		<!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
+
 	<body>
 	
+	<nav>
+			<div class="nav-wrapper">
+				<div class = "container">
+					<img src="images/Etude_Logo_Yellow_V1.png" a href="profile.html" class="brand-logo">
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><a href="#">About</a></li>
+						<li><a href="#">Projects</a></li>
+						<li><a href="#">Bands</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class = "container">
 		<div id = "waveform-div"></div>
 		<canvas id = "canvas-element" style = "height:200px; width:500px;"></canvas>
 
@@ -14,5 +35,7 @@
 		<script type="text/javascript" src = "scripts/main.js"></script>
 		<script type="text/javascript" src = "scripts/waveformApi.js"></script>
 		<script type="text/javascript" src = "scripts/waveformData.js"></script>
+		<script type="text/javascript" src = "scripts/lib/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src = "scripts/lib/materialize.min.js"></script>
 	</body>
 </html>
