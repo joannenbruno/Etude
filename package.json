@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/joannenbruno/Etude",
   "dependencies": {
-    "express": "^4.8.2"
+    "express": "^4.8.2",
+    "waveform-data": "^1.5.1"
   },
   "devDependencies": {
     "browser-sync": "^2.7.1",
