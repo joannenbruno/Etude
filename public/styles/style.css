@@ -1,8 +1,8 @@
-/* user defined styles */
-body {
-	background: linear-gradient(#1DAD9B, #FCFFC1)
+nav {
+  background: -webkit-linear-gradient(45deg, #1DAD9B, #FCFFC1);
+  background: linear-gradient(45deg, #1DAD9B, #FCFFC1);
 }
 
-.valign-helper {
-	margin: auto;
+#create-proj {
+  margin-top: 30px;
 }
