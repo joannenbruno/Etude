@@ -16,10 +16,11 @@
 		<nav>
 			<div class="nav-wrapper">
 				<div class = "container">
-					<img src="images/Etude_Logo_V1.png" class="brand-logo">
+					<img src="images/Etude_Logo_Yellow_V1.png" href="profile.html" class="brand-logo">
 					<ul id="nav-mobile" class="right hide-on-med-and-down">
 						<li><a href="#">About</a></li>
-						<li><a href="#">Profile</a></li>
+						<li><a href="#">Projects</a></li>
+						<li><a href="#">Bands</a></li>
 					</ul>
 				</div>
 			</div>
@@ -27,18 +28,81 @@
 		<div class = "container">
 			 <!-- Modal Trigger -->
 			<div class = "row">
-		   	<a id= "create-proj"class="waves-effect waves-light btn modal-trigger col s2 offset-s10" href="#add-project-modal">Create Project</a>
+		   	<a id="create-proj" class="waves-effect waves-light btn col s3 offset-s9 modal-trigger " href="#add-project-modal">Create Project</a>
 		 	</div>
 		   <!-- Modal Structure -->
 		   <div id="add-project-modal" class="modal">
 		     <div class="modal-content">
-		       <h4>Project Title</h4>
-		       <p>Project Description</p>
+
+					  <div class="row">
+					    <form class="col s12">
+					      <div class="row">
+					        <div class="input-field col s12">
+					          <input type="text" class="validate">
+					          <label for="first_name">Project Name</label>
+					        </div>
+								</div>
+								<div class="row">
+					        <div class="input-field col s12">
+					          <input type="text" class="validate">
+					          <label for="last_name">Description</label>
+					        </div>
+								</div>
+					    </form>
+					  </div>
+
+					 <!--Upload Track File-->
+					  <form action="#">
+					    <div class="file-field input-field">
+					      <div class="btn">
+					        <span>Upload Cover Art</span>
+					        <input type="file">
+					      </div>
+					      <div class="file-path-wrapper">
+					        <input class="file-path validate" type="text">
+					      </div>
+					    </div>
+					  </form>
 		     </div>
 		     <div class="modal-footer">
 		       <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
 		     </div>
 		   </div>
+
+			 <!--Project Cards-->
+			 <div class="row">
+         <div class="col s12 m6">
+           <div class="card medium">
+             <div class="card-image">
+               <img src="images/TheRealSelfieStick.png">
+
+             </div>
+             <div class="card-content">
+							 <span class="card-title text-white">Project Title</span>
+               <p>This is the description of a particular project.</p>
+             </div>
+             <div class="card-action">
+               <a href="project.html">Take me to the Repo Tree</a>
+             </div>
+           </div>
+         </div>
+
+				 <div class="col s12 m6">
+					 <div class="card medium">
+						 <div class="card-image">
+							 <img src="images/PinkRose.jpeg">
+
+						 </div>
+						 <div class="card-content">
+							<span class="card-title text-white">Project Title 2</span>
+							 <p>This is the description of a particular project.</p>
+						 </div>
+						 <div class="card-action">
+							 <a href="project.html">Take me to the repo tree</a>
+						 </div>
+					 </div>
+				 </div>
+       </div>
 
 
 		</div>
