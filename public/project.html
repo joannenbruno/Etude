@@ -17,19 +17,67 @@
 		<nav>
 			<div class="nav-wrapper">
 				<div class = "container">
-					<img src="images/Etude_Logo_Yellow_V1.png" a href="profile.html" class="brand-logo">
-					<ul id="nav-mobile" class="right hide-on-med-and-down">
-						<li><a href="#">About</a></li>
-						<li><a href="#">Projects</a></li>
-						<li><a href="#">Bands</a></li>
+					<a href = "index.html"><img src="images/Etude_Logo_Yellow_V1.png" a href="profile.html" class="brand-logo"></a>
+					<ul id="nav-mobile" class="right">
+						<li><a href="profile.html">My Profile</a></li>
+						<li><a href="#">My Bands</a></li>
+            <li><a href="#">About</a></li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 
-    <!--TODO Back button-->
+    <div class = "container">
+       <!-- Modal Trigger -->
+      <div class = "row">
+        <a id="create-proj" class="waves-effect waves-light btn col s3 offset-s9 modal-trigger " href="#add-project-modal">Add Track</a>
+      </div>
 
-    <!--TODO D3.js tree viz-->
+       <!-- Modal Structure -->
+       <div id="add-project-modal" class="modal">
+         <div class="modal-content">
+
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" class="validate">
+                    <label for="first_name">Track Title</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" class="validate">
+                    <label for="last_name">Description</label>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" class="validate">
+                    <label for="version">Version Number</label>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+           <!--Upload Track File-->
+            <form action="#">
+              <div class="file-field input-field">
+                <div class="btn">
+                  <span>Upload Track</span>
+                  <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+              </div>
+            </form>
+         </div>
+         <div class="modal-footer">
+           <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+         </div>
+       </div>
+    </div>
 
     <script type="text/javascript" src = "scripts/lib/d3.min.js"></script>
     <script type="text/javascript" src = "scripts/treeViz.js"></script>
