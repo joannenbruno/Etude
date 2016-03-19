@@ -5,6 +5,9 @@ var browserSync = require('browser-sync');	// synch browser and code changes
 var nodemon = require('gulp-nodemon');			
 var lint = require('gulp-eslint');					// lint JS files
 var imagemin = require('gulp-imagemin');		// optimizing images
+var rename = require('gulp-rename');				// optimizing js
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 
 // configuration object
 var config = {
@@ -13,7 +16,17 @@ var config = {
 	port: 7000,
 	paths: {
 		files: "public/**/*.*",
-		js: "public/scripts/*.js"
+		images: "public/images/*",
+		js: "public/scripts/*.js",
+		waveformJs: "public/scripts/waveformScripts/*.js"
+	}
+}
+
+// destination configuration object
+var destConfig = {
+	paths: {
+		images: 'public/dist/images',
+		waveformJs: 'public/dist/scripts/waveformScripts'
 	}
 }
 
@@ -44,9 +57,18 @@ gulp.task('nodemon', function (cb) {
 
 // image task
 gulp.task('images', function() {
-	return gulp.src('public/images/*')
+	return gulp.src(config.paths.images)
 	.pipe(imagemin({progressive : true}))
-	.pipe(gulp.dest('public/dist/images'));
+	.pipe(gulp.dest(destConfig.paths.images));
+});
+
+// waveform-based scripts task
+gulp.task('waveform-scripts', function() {
+  return gulp.src(config.paths.waveformJs)
+    .pipe(concat('waveformMain.js'))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(uglify())
+    .pipe(gulp.dest(destConfig.paths.waveformJs))
 });
 
 // linting task
@@ -59,6 +81,9 @@ gulp.task('lint', function() {
 // watch task for any html/js changes
 gulp.task('watch', function() {
 	gulp.watch(config.paths.js, ['lint']);
+	gulp.watch(config.paths.waveformJs, ['lint']);
+	gulp.watch(config.paths.waveformJs, ['waveform-scripts']);
+	gulp.watch(config.paths.images, ['images']);
 });
 
 // default gulp tasks
