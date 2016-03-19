@@ -24,6 +24,7 @@
     "browser-sync": "^2.7.1",
     "gulp": "^3.9.0",
     "gulp-eslint": "^0.15.0",
+    "gulp-imagemin": "^2.4.0",
     "gulp-nodemon": "^1.0.4"
   }
 }

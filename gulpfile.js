@@ -4,6 +4,7 @@ var gulp = require('gulp');
 var browserSync = require('browser-sync');	// synch browser and code changes
 var nodemon = require('gulp-nodemon');			
 var lint = require('gulp-eslint');					// lint JS files
+var imagemin = require('gulp-imagemin');		// optimizing images
 
 // configuration object
 var config = {
@@ -39,6 +40,13 @@ gulp.task('nodemon', function (cb) {
 			started = true; 
 		} 
 	});
+});
+
+// image task
+gulp.task('images', function() {
+	return gulp.src('public/images/*')
+	.pipe(imagemin({progressive : true}))
+	.pipe(gulp.dest('public/dist/images'));
 });
 
 // linting task
