@@ -12,13 +12,16 @@ $(document).ready(function(){
 		// value variables
 		var projectNameValue = $('#project-name').val();
 		var projectDescriptionValue = $('#project-description').val();
-		var projectArtValue = $('#project-art');
+
+		// grab and creat image file object
+		var projectArtValue = $('#project-art')[0].files[0];
+		var imagefile = window.URL.createObjectURL(projectArtValue);
 
 		// assign to project object
 		var newProject = {
 			'name': projectNameValue,
 			'description': projectDescriptionValue,
-			'art': projectArtValue
+			'art': imagefile
 		};
 
 		// log event and field values to the console for debug purposes
@@ -29,7 +32,7 @@ $(document).ready(function(){
 		var newDivColClass = $("<div class = 'col s12 m6' />"),
 				newDivCardClass = $("<div class = 'card medium' />"),
 				newDivCardImageClass = $("<div class = 'card-image' />"),
-				newCardImgSrc = $("<img src=" + newProject.art + ">");
+				newCardImgSrc = $("<img src=" + newProject.art + " />");
 
 		// inner card elements
 		var newDivCardContentClass = $("<div class = 'card-content' />"),
