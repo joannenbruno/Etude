@@ -1,43 +1,5 @@
 'use strict';
 
-var treeData = [
-  {
-    "name": "Rhythm Guitar",
-    "parent": "null",
-    "children": [
-      {
-        "name": "Lead Guitar",
-        "parent": "Top Level",
-        "children": [
-          {
-            "name": "Lead Harmonies",
-            "parent": "Level 2: A"
-          },
-          {
-            "name": "Fills",
-            "parent": "Level 2: A"
-          }
-        ]
-      },
-      {
-        "name": "Bass",
-        "parent": "Top Level"
-      },
-      {
-        "name" : "Vocals",
-        "parent": "Top Level",
-        "children": [
-          {
-            "name": "Harmonies",
-            "parent": "Level 2: A"
-          }
-        ]
-      }
-    ]
-  }
-];
-
-
 // Generate the tree diagram
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
 	width = 960 - margin.right - margin.left,

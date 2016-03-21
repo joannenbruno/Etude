@@ -62,19 +62,34 @@ $(document).ready(function(){
 		//value variables
 		var trackTitleValue = $('#track-title').val();
 		var trackDescriptionValue = $('#track-description').val();
+		var trackParentTrackValue = $('#parent-track').val();
 		var trackVersionNumberValue = $('#version-number').val();
-		var trackFile = $('#track-file');
+
+		var trackFile = $('#track-file')[0].files[0];
+		var trackFileObject = window.URL.createObjectURL(trackFile);
 
 		// assign to track object
 		var newTrack = {
 			'title': trackTitleValue,
 			'description': trackDescriptionValue,
+			'parent_track': trackParentTrackValue,
 			'version-number': trackVersionNumberValue,
-			'file': trackFile
+			'file': trackFileObject
 		};
 
 		// log event and fields values to the console for debugging purposes
 		console.log(e);
 		console.log(newTrack);
+
+		// create json data text object
+		var newTrackJsonText = '[{ "name" : "' + newTrack.title +
+		'", "parent":"' + newTrack.parent_track + '"}]';
+
+		// log to console for debugging purposes
+		console.log(newTrackJsonText);
+
+		// parse text as JSON, log table to console
+		var newTrackJson = JSON.parse(newTrackJsonText);
+		console.table(newTrackJson);
 	}
 });

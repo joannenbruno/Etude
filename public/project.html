@@ -34,6 +34,7 @@
       </div>
 
        <!-- Modal Structure -->
+       <!-- TODO: Add validation -->
        <div id="add-project-modal" class="modal">
          <div class="modal-content">
 
@@ -42,15 +43,23 @@
                 <div class="row">
                   <div class="input-field col s12">
                     <input type="text" class="validate" id="track-title">
-                    <label for="first_name">Track Title</label>
+                    <label for="track_title">Track Title</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
                     <input type="text" class="validate" id="track-description">
-                    <label for="last_name">Description</label>
+                    <label for="track_description">Description</label>
                   </div>
                 </div>
+                <!-- TODO: Should be drop-down based on made tracks -->
+                <div class="row">
+                  <div class="input-field col s12">
+                    <input type="text" class="validate" id="parent-track">
+                    <label for="parent_track">Parent Track</label>
+                  </div>
+                </div>
+                <!-- TODO: Should be drop-down based on versions -->
                 <div class="row">
                   <div class="input-field col s12">
                     <input type="text" class="validate" id="version-number">
@@ -65,10 +74,10 @@
               <div class="file-field input-field">
                 <div class="btn">
                   <span>Upload Track</span>
-                  <input type="file">
+                  <input type="file" accept="audio/*" id="track-file">
                 </div>
                 <div class="file-path-wrapper">
-                  <input class="file-path validate" type="text" id="track-file">
+                  <input class="file-path validate" type="text">
                 </div>
               </div>
             </form>
@@ -81,6 +90,7 @@
     </div>
 
     <script type="text/javascript" src = "scripts/lib/d3.min.js"></script>
+    <script type="text/javascript" src = "scripts/treeData.js"></script>
     <script type="text/javascript" src = "scripts/treeViz.js"></script>
 		<script type="text/javascript" src = "scripts/lib/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src = "scripts/lib/materialize.min.js"></script>
