@@ -59,6 +59,17 @@ function update(source) {
     .text(function(d) { return d.name; })
     .style("fill-opacity", 1e-6);
 
+  nodeEnter.append("a")
+     .attr("xlink:href", function (d) { return "/track.html" /* + d.id */; })
+     .append("rect")
+     .attr("class", "clickable")
+     .attr("y", -6)
+     .attr("x", function (d) { return d.children || d._children ? -60 : 10; })
+     .attr("width", 50) //2*4.5)
+     .attr("height", 12)
+     .style("fill", "lightsteelblue")
+     .style("fill-opacity", .3);        // set to 1e-6 to hide
+
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
     .duration(duration)
