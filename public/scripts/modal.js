@@ -54,6 +54,9 @@ $(document).ready(function(){
 		$(newDivCardActionClass).append(newHrefProjectPage);
 	}
 
+	// parent JSON object holder
+	var jsonTracks = [];
+
 	// track modal submit function
 	$('#track-submit').on('click', addTrack);
 	function addTrack(e) {
@@ -72,18 +75,29 @@ $(document).ready(function(){
 		var newTrack = {
 			'title': trackTitleValue,
 			'description': trackDescriptionValue,
-			'parent_track': trackParentTrackValue,
+			'parentTrack': trackParentTrackValue,
 			'version-number': trackVersionNumberValue,
 			'file': trackFileObject
 		};
+
+		// null check for JSON formatting
+		if (newTrack.parentTrack === "") {
+			newTrack.parentTrack = "null";
+		}
 
 		// log event and fields values to the console for debugging purposes
 		console.log(e);
 		console.log(newTrack);
 
+		// call tree data formatting function
+		treeDataJsonFormat(newTrack);
+	}
+
+	// format submit data to d3 friendly format
+	function treeDataJsonFormat(newTrack){
 		// create json data text object
 		var newTrackJsonText = '[{ "name" : "' + newTrack.title +
-		'", "parent":"' + newTrack.parent_track + '"}]';
+		'", "parent":"' + newTrack.parentTrack + '"}]';
 
 		// log to console for debugging purposes
 		console.log(newTrackJsonText);
@@ -91,5 +105,26 @@ $(document).ready(function(){
 		// parse text as JSON, log table to console
 		var newTrackJson = JSON.parse(newTrackJsonText);
 		console.table(newTrackJson);
+
+		jsonTracks.push(newTrackJson);
+		console.log(jsonTracks);
+
+		// parent track check
+		treeDataParentCheck(newTrack.parentTrack);
+	}
+
+	// ascertain if parent track pertains to data, format further
+	function treeDataParentCheck(parentTrack) {
+		// TODO: UI dropdown validation so user can't create
+		// new children without first selecting a parent
+
+		for (var track in jsonTracks) {
+			for (var i in jsonTracks[track]) {
+				if (jsonTracks[track][i].name === parentTrack.toString()) {
+					console.log("PARENT TRACK FOUND: " + parentTrack);
+				}
+			}
+		}
+
 	}
 });
