@@ -1,8 +1,10 @@
 $(document).ready(function(){
-	console.log("Document Ready");
-
 	// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
 	$('.modal-trigger').leanModal();
+
+	// You must initialize the select element as shown below. In addition, you will need a separate 
+	// call for any dynamically generated select elements your page generates.
+  $('select').material_select();
 
 	// project modal submit function
 	$('#project-submit').on('click', addProject);
@@ -30,7 +32,7 @@ $(document).ready(function(){
 
 		// parent level card class elements
 		var newDivColClass = $("<div class = 'col s12 m6' />"),
-				newDivCardClass = $("<div class = 'card medium' />"),
+				newDivCardClass = $("<div class = 'card medium hoverable' />"),
 				newDivCardImageClass = $("<div class = 'card-image' />"),
 				newCardImgSrc = $("<img src=" + newProject.art + " />");
 
@@ -54,8 +56,9 @@ $(document).ready(function(){
 		$(newDivCardActionClass).append(newHrefProjectPage);
 	}
 
-	// parent JSON object holder
+	// parent JSON object holders
 	var jsonTracks = [];
+	var treeJsonData = [];
 
 	// track modal submit function
 	$('#track-submit').on('click', addTrack);
@@ -100,7 +103,7 @@ $(document).ready(function(){
 		'", "parent":"' + newTrack.parentTrack + '"}]';
 
 		// log to console for debugging purposes
-		console.log(newTrackJsonText);
+		// console.log(newTrackJsonText);
 
 		// parse text as JSON, log table to console
 		var newTrackJson = JSON.parse(newTrackJsonText);
@@ -110,7 +113,18 @@ $(document).ready(function(){
 		console.log(jsonTracks);
 
 		// parent track check
-		treeDataParentCheck(newTrack.parentTrack);
+		if (treeDataParentCheck(newTrack.parentTrack) !== null) {
+			var newChildTrackJsonText = '[{"name":"' + newTrack.title + 
+			'", "parent":"' + newTrack.parentTrack +' "}]';
+
+			var newChildTrackJson = JSON.parse(newChildTrackJsonText);
+
+			treeJsonData.children = newChildTrackJson;
+			console.table(treeJsonData);
+		} else {
+			treeJsonData.push(newTrackJson);
+			console.log(treeJsonData);
+		}
 	}
 
 	// ascertain if parent track pertains to data, format further
@@ -122,9 +136,12 @@ $(document).ready(function(){
 			for (var i in jsonTracks[track]) {
 				if (jsonTracks[track][i].name === parentTrack.toString()) {
 					console.log("PARENT TRACK FOUND: " + parentTrack);
+					return parentTrack;
 				}
 			}
 		}
+
+		return null;
 
 	}
 });
