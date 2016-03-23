@@ -4,6 +4,8 @@
 
 		<!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Import materialize css framework and self-made styles -->
 		<link rel="stylesheet" href="styles/materialize/css/materialize.min.css">
 		<link rel="stylesheet" href="styles/style.css"/>
     <link rel="stylesheet" href="styles/viz-tree-style.css"/>
@@ -41,16 +43,20 @@
             <div class="row">
               <form class="col s12">
                 <div class="row">
+
                   <div class="input-field col s12">
                     <input type="text" class="validate" id="track-title">
                     <label for="track_title">Track Title</label>
                   </div>
+
                 </div>
                 <div class="row">
+
                   <div class="input-field col s12">
                     <input type="text" class="validate" id="track-description">
                     <label for="track_description">Description</label>
                   </div>
+
                 </div>
                 <!-- TODO: Should be drop-down based on made tracks -->
                 <div class="row">
@@ -58,9 +64,11 @@
                     <input type="text" class="validate" id="parent-track">
                     <label for="parent_track">Parent Track</label>
                   </div>
+
                 </div>
                 <!-- TODO: Should be drop-down based on versions -->
                 <div class="row">
+
                   <div class="input-field col s12">
                     <select id="version-number">
                       <option value="" disabled selected>Choose version</option>
@@ -69,11 +77,8 @@
                       <option value="3">3</option>
                     </select>
                     <label>Version Number</label>
-                    <!--
-                    <input type="text" class="validate" id="version-number">
-                    <label for="version">Version Number</label>
-                    -->
                   </div>
+
                 </div>
               </form>
             </div>
@@ -81,13 +86,16 @@
            <!--Upload Track File-->
             <form action="#">
               <div class="file-field input-field">
+
                 <div class="btn">
                   <span>Upload Track</span>
                   <input type="file" accept="audio/*" id="track-file">
                 </div>
+
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text">
                 </div>
+                
               </div>
             </form>
          </div>

@@ -27,19 +27,24 @@ $(document).ready(function(){
 		};
 
 		// log event and field values to the console for debug purposes
-		console.log(e);
+		// console.log(e);
 		console.log(newProject);
 
+		createCard(newProject.name, newProject.description, newProject.art);
+	}
+
+	// creates card html and css using jQuery
+	function createCard(name, description, art) {
 		// parent level card class elements
 		var newDivColClass = $("<div class = 'col s12 m6' />"),
 				newDivCardClass = $("<div class = 'card medium hoverable' />"),
 				newDivCardImageClass = $("<div class = 'card-image' />"),
-				newCardImgSrc = $("<img src=" + newProject.art + " />");
+				newCardImgSrc = $("<img src=" + art + " />");
 
 		// inner card elements
 		var newDivCardContentClass = $("<div class = 'card-content' />"),
-				newSpanCardTitleClass = $("<span class = 'card-title text-white'>" + newProject.name + "</span>"),
-				newCardParagraph = $("<p>" + newProject.description + "</p>"),
+				newSpanCardTitleClass = $("<span class = 'card-title text-white'>" + name + "</span>"),
+				newCardParagraph = $("<p>" + description + "</p>"),
 				newDivCardActionClass = $("<div class = 'card-action' />"),
 				newHrefProjectPage = $("<a href='project.html'>Take me to the repo tree</a>");
 
@@ -89,11 +94,14 @@ $(document).ready(function(){
 		}
 
 		// log event and fields values to the console for debugging purposes
-		console.log(e);
+		// console.log(e);
 		console.log(newTrack);
 
 		// call tree data formatting function
 		treeDataJsonFormat(newTrack);
+
+		removeTree();
+		set();
 	}
 
 	// format submit data to d3 friendly format
@@ -142,6 +150,6 @@ $(document).ready(function(){
 		}
 
 		return null;
-
 	}
+
 });
