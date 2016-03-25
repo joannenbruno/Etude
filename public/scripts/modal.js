@@ -71,9 +71,11 @@ $(document).ready(function(){
 		// iterate click event on each submit
 		clickEvent += 1;
 
+
 		//value variables
 		var trackTitleValue = $('#track-title').val();
 		var trackDescriptionValue = $('#track-description').val();
+		var trackParentTrackDropdown = $('#parent-track');
 		var trackParentTrackValue = $('#parent-track').val();
 		var trackVersionNumberValue = $('#version-number').val();
 
@@ -106,6 +108,15 @@ $(document).ready(function(){
 			// set initial d3 tree
 			set();
 		}
+
+		// add track to parent-track dropdown options
+		trackParentTrackDropdown.append(
+			$("<option></option")
+			.attr("value", trackTitleValue)
+			.text(trackTitleValue));
+
+		// re-init select
+		$('select').material_select();
 	}
 
 	// format submit data to d3 friendly format
