@@ -91,8 +91,9 @@ function update(source) {
     .on("click", click);
 
   nodeEnter.append("circle")
-    .attr("r", 1e-6)
-    .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+    .attr("r", 10)
+    .style("stroke", "#1DAD9B")
+    .style("fill", function(d) { return d.level; });
 
   nodeEnter.append("text")
     .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
@@ -110,7 +111,7 @@ function update(source) {
      .attr("width", 50) //2*4.5)
      .attr("height", 12)
      .style("fill", "lightsteelblue")
-     .style("fill-opacity", .3);        // set to 1e-6 to hide
+     .style("fill-opacity", 1e-6);        // set to 1e-6 to hide
 
   // Transition nodes to their new position.
   var nodeUpdate = node.transition()
@@ -119,7 +120,7 @@ function update(source) {
 
   nodeUpdate.select("circle")
     .attr("r", 10)
-    .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+    .style("fill", function(d) { return d.level; });
 
   nodeUpdate.select("text")
     .style("fill-opacity", 1);
