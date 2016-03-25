@@ -7,8 +7,32 @@ var i,
     tree,
     svg;
 
-function removeTree(){
-  d3.select(self.frameElement).remove();
+// *********** Convert flat data into a nice tree ***************
+// create a name: node map
+
+function flattenTreeData(data) {
+  var dataMap = data.reduce(function(map, node) {
+    map[node.name] = node;
+    return map;
+  }, {});
+
+  // create the tree array
+  var treeData = [];
+  data.forEach(function(node) {
+    // add to parent
+    var parent = dataMap[node.parent];
+    if (parent) {
+      // create child array if it doesn't exist
+      (parent.children || (parent.children = []))
+        // add node to child array
+        .push(node);
+    } else {
+      // parent is null or missing
+      treeData.push(node);
+    }
+  });
+
+  return treeData;
 }
 
 function set() {
@@ -32,7 +56,7 @@ function set() {
     .append("g")
   	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  root = treeData[0];
+  root = flattenTreeData(jsonTracks)[0];
   root.x0 = height / 2;
   root.y0 = 0;
     
@@ -40,6 +64,12 @@ function set() {
 
   d3.select(self.frameElement).style("height", "500px");
 }
+
+// tree removal function, meant to be called after each track submit
+function removeTree(){
+  d3.select(self.frameElement).remove();
+}
+
 
 function update(source) {
 

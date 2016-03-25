@@ -29,32 +29,69 @@ function createWaveformElements(mainDivID, containerElementId, divControlsId, sr
 
 	// set all buttons and their data-actions
 	var buttonOne = document.createElement('button');
+
+	// add materialize button classes
+	buttonOne.classList.add("waves-effect");
+	buttonOne.classList.add("waves-light");
+	buttonOne.classList.add("btn");
 	buttonOne.setAttribute('data-action', "zoom-in");
 	buttonOne.innerHTML = "zoom in";
 
 	var buttonTwo = document.createElement('button');
+
+	// add materialize button classes
+	buttonTwo.classList.add("waves-effect");
+	buttonTwo.classList.add("waves-light");
+	buttonTwo.classList.add("btn");
 	buttonTwo.setAttribute('data-action', "zoom-out");
 	buttonTwo.innerHTML = "zoom out";
 
 	var buttonThree = document.createElement('button');
+
+	// add materialize button classes
+	buttonThree.classList.add("waves-effect");
+	buttonThree.classList.add("waves-light");
+	buttonThree.classList.add("btn");
 	buttonThree.setAttribute('data-action', "add-segment");
-	buttonThree.innerHTML = "Add a Segment at current time";
+	buttonThree.innerHTML = "Add a Segment";
 
 	var buttonFour = document.createElement('button');
+
+	// add materialize button classes
+	buttonFour.classList.add("waves-effect");
+	buttonFour.classList.add("waves-light");
+	buttonFour.classList.add("btn");
 	buttonFour.setAttribute('data-action', "remove-segments");
 	buttonFour.innerHTML = "Remove all Segments";
 
 	var buttonFive = document.createElement('button');
-	buttonFive.setAttribute('data-action', "add-point");
-	buttonFive.innerHTML = "Add a Point at current time";
 
+	// add materialize button classes
+	buttonFive.classList.add("waves-effect");
+	buttonFive.classList.add("waves-light");
+	buttonFive.classList.add("btn");
+	buttonFive.setAttribute('data-action', "add-point");
+	buttonFive.innerHTML = "Add a Point";
+
+	/* Debug buttons
 	var buttonSix = document.createElement('button');
+
+	// add materialize button classes
+	buttonSix.classList.add("waves-effect");
+	buttonSix.classList.add("waves-light");
+	buttonSix.classList.add("btn");
 	buttonSix.setAttribute('data-action', "log-data");
 	buttonSix.innerHTML = "Log segments/points";
 
 	var buttonSeven = document.createElement('button');
+
+	// add materialize button classes
+	buttonSeven.classList.add("waves-effect");
+	buttonSeven.classList.add("waves-light");
+	buttonSeven.classList.add("btn");
 	buttonSeven.setAttribute('data-action', "return-segments");
 	buttonSeven.innerHTML = "Return segments";
+	*/
 
 	// append to audio controls
 	controlsDiv.appendChild(buttonOne);
@@ -62,8 +99,11 @@ function createWaveformElements(mainDivID, containerElementId, divControlsId, sr
 	controlsDiv.appendChild(buttonThree);
 	controlsDiv.appendChild(buttonFour);
 	controlsDiv.appendChild(buttonFive);
+
+	/*
 	controlsDiv.appendChild(buttonSix);
 	controlsDiv.appendChild(buttonSeven);
+	*/
 
 	// append parent divs to mains divs
 	mainDiv.appendChild(waveformDiv);
@@ -118,7 +158,7 @@ function setWaveformOptions(containerElementId, dataUriArrayBuffer, dataUriJson)
 			playheadTextColor: '#aaa',
 
 			// the color of a point marker
-			pointMarkerColor: '#FF0000',
+			pointMarkerColor: '#1DAD9B',
 
 			// Colour of the axis gridlines
 			axisGridlineColor: '#ccc',
@@ -158,10 +198,12 @@ function makeWaveformSet(instance) {
   	_removeAllTrackSegments(instance);
   });
 
+  /*
   // remove all segments by calling waveformApi
   document.querySelector('button[data-action="return-segments"]').addEventListener('click', function() {
   	console.log(_getTrackSegments(instance));
   });
+	*/
 
   // add point at time selected button
   document.querySelector('button[data-action="add-point"]').addEventListener("click", function () {
@@ -173,11 +215,13 @@ function makeWaveformSet(instance) {
     instance.points.add([point]);
   });
 
+  /*
   // log buttons and segments button
   document.querySelector('button[data-action="log-data"]').addEventListener("click", function (event) {
     console.log('Segments', instance.segments.getSegments());
     console.log('Points', instance.points.getPoints());
   });
+	*/
 
   // log when segments are fully loaded
   instance.on('segments.ready', function(){

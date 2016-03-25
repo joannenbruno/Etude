@@ -1,36 +1,9 @@
-var treeData = [
-  {
-    "name": "Rhythm Guitar",
-    "parent": "null",
-    "children": [
-      {
-        "name": "Lead Guitar",
-        "parent": "Top Level",
-        "children": [
-          {
-            "name": "Lead Harmonies",
-            "parent": "Level 2: A"
-          },
-          {
-            "name": "Fills",
-            "parent": "Level 2: A"
-          }
-        ]
-      },
-      {
-        "name": "Bass",
-        "parent": "Top Level"
-      },
-      {
-        "name": "Vocals",
-        "parent": "Top Level",
-        "children": [
-          {
-            "name": "Harmonies",
-            "parent": "Level 2: A"
-          }
-        ]
-      }
-    ]
-  }
+var data = [
+  { "name": "Rhythm Guitar", "parent": "null"},
+  { "name": "Lead Guitar", "parent": "Rhythm Guitar" },
+  { "name": "Leads", "parent": "Lead Guitar" },
+  { "name": "Fills", "parent": "Lead Guitar" },
+  { "name": "Bass", "parent": "Rhythm Guitar" },
+  { "name": "Vocals", "parent": "Rhythm Guitar" },
+  { "name": "Harmonies", "parent": "Vocals" }
 ];

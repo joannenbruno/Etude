@@ -1,3 +1,6 @@
+// parent JSON object holder for d3 tree
+var jsonTracks = [];
+
 $(document).ready(function(){
 	// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
 	$('.modal-trigger').leanModal();
@@ -25,10 +28,6 @@ $(document).ready(function(){
 			'description': projectDescriptionValue,
 			'art': imagefile
 		};
-
-		// log event and field values to the console for debug purposes
-		// console.log(e);
-		console.log(newProject);
 
 		createCard(newProject.name, newProject.description, newProject.art);
 	}
@@ -61,14 +60,16 @@ $(document).ready(function(){
 		$(newDivCardActionClass).append(newHrefProjectPage);
 	}
 
-	// parent JSON object holders
-	var jsonTracks = [];
-	var treeJsonData = [];
+	// parent counter
+	var clickEvent = 0;
 
 	// track modal submit function
 	$('#track-submit').on('click', addTrack);
 	function addTrack(e) {
 		e.preventDefault();
+
+		// iterate click event on each submit
+		clickEvent += 1;
 
 		//value variables
 		var trackTitleValue = $('#track-title').val();
@@ -93,63 +94,37 @@ $(document).ready(function(){
 			newTrack.parentTrack = "null";
 		}
 
-		// log event and fields values to the console for debugging purposes
-		// console.log(e);
-		console.log(newTrack);
-
 		// call tree data formatting function
 		treeDataJsonFormat(newTrack);
 
-		removeTree();
-		set();
+		// update on second track submittal
+		if (clickEvent >= 2) {
+			console.log("Tree updated");
+			removeTree();
+			update(root);
+		} else {
+			// set initial d3 tree
+			set();
+		}
 	}
 
 	// format submit data to d3 friendly format
 	function treeDataJsonFormat(newTrack){
 		// create json data text object
-		var newTrackJsonText = '[{ "name" : "' + newTrack.title +
-		'", "parent":"' + newTrack.parentTrack + '"}]';
-
-		// log to console for debugging purposes
-		// console.log(newTrackJsonText);
+		var newTrackJsonText = '{ "name" : "' + newTrack.title +
+		'", "parent":"' + newTrack.parentTrack + '"}';
 
 		// parse text as JSON, log table to console
 		var newTrackJson = JSON.parse(newTrackJsonText);
 		console.table(newTrackJson);
 
+		// push json to parent holder
 		jsonTracks.push(newTrackJson);
+		console.log("DEBUG: jsonTracks object: ");
 		console.log(jsonTracks);
 
-		// parent track check
-		if (treeDataParentCheck(newTrack.parentTrack) !== null) {
-			var newChildTrackJsonText = '[{"name":"' + newTrack.title + 
-			'", "parent":"' + newTrack.parentTrack +' "}]';
-
-			var newChildTrackJson = JSON.parse(newChildTrackJsonText);
-
-			treeJsonData.children = newChildTrackJson;
-			console.table(treeJsonData);
-		} else {
-			treeJsonData.push(newTrackJson);
-			console.log(treeJsonData);
-		}
-	}
-
-	// ascertain if parent track pertains to data, format further
-	function treeDataParentCheck(parentTrack) {
-		// TODO: UI dropdown validation so user can't create
-		// new children without first selecting a parent
-
-		for (var track in jsonTracks) {
-			for (var i in jsonTracks[track]) {
-				if (jsonTracks[track][i].name === parentTrack.toString()) {
-					console.log("PARENT TRACK FOUND: " + parentTrack);
-					return parentTrack;
-				}
-			}
-		}
-
-		return null;
+		// set data input as flat for d3 tree
+		flattenTreeData(jsonTracks);
 	}
 
 });
