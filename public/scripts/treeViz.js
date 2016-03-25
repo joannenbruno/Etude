@@ -38,7 +38,7 @@ function flattenTreeData(data) {
 function set() {
   // Generate the tree diagram
   var margin = {top: 20, right: 120, bottom: 20, left: 120},
-  	width = 960 - margin.right - margin.left,
+  	width = 1000 - margin.right - margin.left,
   	height = 500 - margin.top - margin.bottom;
   	
   i = 0;
@@ -78,7 +78,7 @@ function update(source) {
     links = tree.links(nodes);
 
   // Normalize for fixed-depth.
-  nodes.forEach(function(d) { d.y = d.depth * 180; });
+  nodes.forEach(function(d) { d.y = d.depth * 280; });
 
   // Update the nodes…
   var node = svg.selectAll("g.node")
