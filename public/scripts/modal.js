@@ -123,8 +123,7 @@ $(document).ready(function(){
 	function treeDataJsonFormat(newTrack){
 		// create json data text object
 		var newTrackJsonText = '{ "name" : "' + newTrack.title +
-		'", "parent":"' + newTrack.parentTrack + 
-		'", "level":"#FCFFC1"}';
+		'", "parent":"' + newTrack.parentTrack + '"}';
 
 		// parse text as JSON, log table to console
 		var newTrackJson = JSON.parse(newTrackJsonText);

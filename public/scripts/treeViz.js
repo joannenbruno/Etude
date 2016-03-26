@@ -38,23 +38,20 @@ function flattenTreeData(data) {
 function set() {
   // Generate the tree diagram
   var margin = {top: 20, right: 120, bottom: 20, left: 120},
-  	width = 1000 - margin.right - margin.left,
-  	height = 500 - margin.top - margin.bottom;
-  	
+    width = 1000 - margin.right - margin.left,
+    height = 500 - margin.top - margin.bottom;
   i = 0;
   duration = 750;
 
-  tree = d3.layout.tree()
-  	.size([height, width]);
+  tree = d3.layout.tree().size([height, width]);
 
-  diagonal = d3.svg.diagonal()
-  	.projection(function(d) { return [d.y, d.x]; });
+  diagonal = d3.svg.diagonal().projection(function(d) { return [d.y, d.x]; });
 
   svg = d3.select("body").append("svg")
-  	.attr("width", width + margin.right + margin.left)
-  	.attr("height", height + margin.top + margin.bottom)
+    .attr("width", width + margin.right + margin.left)
+    .attr("height", height + margin.top + margin.bottom)
     .append("g")
-  	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   root = flattenTreeData(jsonTracks)[0];
   root.x0 = height / 2;
@@ -93,7 +90,7 @@ function update(source) {
   nodeEnter.append("circle")
     .attr("r", 10)
     .style("stroke", "#1DAD9B")
-    .style("fill", function(d) { return d.level; });
+    .style("fill", "#FCFFC1");
 
   nodeEnter.append("text")
     .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
@@ -120,7 +117,7 @@ function update(source) {
 
   nodeUpdate.select("circle")
     .attr("r", 10)
-    .style("fill", function(d) { return d.level; });
+    .style("fill", "#FCFFC1");
 
   nodeUpdate.select("text")
     .style("fill-opacity", 1);
