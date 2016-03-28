@@ -85,7 +85,19 @@ function update(source) {
   var nodeEnter = node.enter().append("g")
     .attr("class", "node")
     .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-    .on("click", click);
+    .on("click", click)
+    .on("mouseover", function(d) {
+      var g = d3.select(this); //the node
+      var info = g.append('text')
+        .classed('info', true)
+        .attr('x', 0)
+        .attr('y', -30)
+        .text(d.description);
+    })
+    .on("mouseout", function() {
+      // remove the info text on mouse out
+      d3.select(this).select('text.info').remove();
+    });
 
   nodeEnter.append("circle")
     .attr("r", 10)
