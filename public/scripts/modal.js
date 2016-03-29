@@ -87,7 +87,7 @@ $(document).ready(function(){
 			'title': trackTitleValue,
 			'description': trackDescriptionValue,
 			'parentTrack': trackParentTrackValue,
-			'version-number': trackVersionNumberValue,
+			'versionNumber': trackVersionNumberValue,
 			'file': trackFileObject
 		};
 
@@ -105,6 +105,7 @@ $(document).ready(function(){
 			removeTree();
 			update(root);
 		} else {
+			$("#body-container").append("<p> Version " + newTrack.versionNumber + "</p>");
 			// set initial d3 tree
 			set();
 		}
