@@ -112,7 +112,7 @@ function update(source) {
     .style("fill-opacity", 1e-6);
 
   nodeEnter.append("a")
-     .attr("xlink:href", function (d) { return "/track.html" /* + d.id */; })
+     .attr("xlink:href", function (d) { return "/track" /* + d.id */; })
      .append("rect")
      .attr("class", "clickable")
      .attr("y", -6)
