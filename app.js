@@ -49,22 +49,32 @@ app.use('/user/', routes);
 // get static pages
 app.get('/', function(req, res) {
 	console.log('Served up index.html');
-	res.sendFile('./public/index/html');
+	res.sendFile('./public/partials/index.html', {root : __dirname});
+});
+
+app.get('/log-in', function(req, res) {
+  console.log('Served up log-in.html');
+  res.sendFile('./public/partials/authentication/log-in.html', {root : __dirname});
+});
+
+app.get('/register', function(req, res) {
+  console.log('Served up register.html');
+  res.sendFile('./public/partials/authentication/register.html', {root : __dirname});
 });
 
 app.get('/profile', function(req, res) {
 	console.log('Served up profile.html');
-	res.sendFile('/public/profile.html', {root : __dirname});
+	res.sendFile('/public/partials/profile.html', {root : __dirname});
 });
 
 app.get('/project', function(req, res) {
 	console.log('Served up project.html');
-	res.sendFile('./public/project.html', {root : __dirname});
+	res.sendFile('./public/partials/project.html', {root : __dirname});
 });
 
 app.get('/track', function(req, res) {
 	console.log('Served up track.html');
-	res.sendFile('./public/track.html', {root : __dirname});
+	res.sendFile('./public/partials/track.html', {root : __dirname});
 });
 
 // error hndlers
